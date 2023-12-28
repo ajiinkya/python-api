@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-api-deployment
+  labels:
+    app: python-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-api
+  template:
+    metadata:
+      labels:
+        app: python-api
+    spec:
+      containers:
+      - name: python-api
+        image: ajinkya1311/python-api:1.0.0
+        ports:
+        - containerPort: 5000
