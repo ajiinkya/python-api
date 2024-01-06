@@ -10,6 +10,12 @@ def home():
 
 @app.route('/connect/<configKey>', methods=['Get'])
 def connect(configKey):
+    # write_data.py
+    data_to_write = "Hello, this data will be stored in a volume!"
+
+    with open("/data/python-app/data.txt", "w") as file:
+        file.write(data_to_write)
+
     return jsonify({'result':f'The config value from source call is {configKey}.'})
 
 if __name__ == '__main__':
